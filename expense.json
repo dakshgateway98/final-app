@@ -1,19 +1,81 @@
 {
-  "posts": [
+  "users": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "name": "Khizir",
+      "email": "khizir@gmail.com",
+      "contact": "9898985656",
+      "designation": "ufhg",
+      "address": "fghgh gnghng",
+      "categories": [
+                      {
+                           "id":1,
+                           "categoryName": "Food Expense",
+                          "maxamount": 1000,
+                           "image": "blob:http://localhost:3000/ef0170fe-932f-42ac-9af1-848b65955d9c",
+                             "enabled": true,
+                             "expenses":[
+                                                   {
+                                                      "id":1,
+                                                      "description": "food1",
+                                                      "spentAmount": 100,
+                                                      "image": "blob:http://localhost:3000/5ff6c9da-ebef-4b8a-80dc-fc68ee2e045b"
+                                                   },
+                                                   {
+                                                       "id":2,
+                                                       "description": "food2",
+                                                       "spentAmount": 300,
+                                                       "image": "blob:http://localhost:3000/5ff6c9da-ebef-4b8a-80dc-fc68ee2e045b"
+                                                   }
+                                          ]
+                        }
+                    ]
+         },
+
+
+
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+      "id": 2,
+      "name": "Daksh",
+      "email": "daksh@gmail.com",
+      "contact": "9890786756",
+      "designation": "gateway",
+      "address": "bodakdev ahmedabad",
+      "categories":[
+                          {
+                              "id":1,          
+                              "categoryName": "Sports Expense",
+                              "maxamount": 5000,
+                              "image": "blob:http://localhost:3000/ef0170fe-932f-42ac-9af1-848b65955d9c",
+                              "enabled": true,
+                              "expenses":[
+                                          {
+                                             "id":1,
+                                             "description": "badminton",
+                                             "spentAmount": 100,
+                                             "image": "blob:http://localhost:3000/5ff6c9da-ebef-4b8a-80dc-fc68ee2e045b"
+                                          },
+                                          {
+                                              "id":2,
+                                              "description": "football",
+                                              "spentAmount": 300,
+                                              "image": "blob:http://localhost:3000/5ff6c9da-ebef-4b8a-80dc-fc68ee2e045b"
+                                          }
+                                        ]
+                           }
+                    ]
+        },
+        {
+          "id": 3,
+          "name": "Nihar",
+          "email": "fef@gmail.com",
+          "contact": "9893486756",
+          "designation": "gateway",
+          "address": "surat "
+      
+            }
+
+
+]
+ 
 }

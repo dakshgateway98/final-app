@@ -1,0 +1,14 @@
+.increment-z-index{
+    z-index: 999999;
+}
+.give-height{
+    height: 6vh;
+}
+.head-for-addExpense{
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(85 133 169);
+    flex-direction: column;
+    align-items: center;
+}
