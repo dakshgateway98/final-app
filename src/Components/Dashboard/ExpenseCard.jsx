@@ -14,8 +14,20 @@ const useStyles = makeStyles({
   },
 });
 
-const  ExpenseCard = () => {
+
+
+const  ExpenseCard = (props) => {
+  const {expe} = props
+  const  id  = expe.id
   const classes = useStyles();
+
+
+  // const clickOnEdit = (expe) =>{
+
+  //   this.props.clickOnEdit(expe);
+
+  // }
+
 
   return (
     <Card className={`${classes.root} m-2`} >
@@ -29,12 +41,18 @@ const  ExpenseCard = () => {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Lizard
+            {expe.name}
+          </Typography>
+          <Typography gutterBottom  component="h5">
+            {expe.description}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button 
+        size="small"
+         color="primary"
+         onClick={() => props.clickOnEdit(expe.id)}>
         <i className="fas fa-edit"></i>
           Edit
         </Button>

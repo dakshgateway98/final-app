@@ -1,4 +1,4 @@
-import React , {useState} from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -54,38 +54,50 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SideNavbar = (props) => {
-  // const { window } = props;
   const { user } = props;
-  const [categories,setCategories] = useState([]);
+  // console.log(user.categories ,"CATEGORIES");
+  const [categories, setCategories] = useState(user.categories);
 
- setCategories(user.categories)
-  console.log("USER-SIDENAVBAR", user);
   const classes = useStyles();
+  //   useEffect(  () => {
 
-  // const [mobileOpen, setMobileOpen] = React.useState(false);
+  //    setCategories( user.categories);
+  //  // console.log(categories,"CATEGORIES")
 
-  const drawer  = (
+  //   }, []);
+
+  const drawer = (
     <div>
       <div className={classes.toolbar} />
-
       <List>
-        {categories.map((category, index) => (
-          <ListItem button key={index}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={category.categoryName} />
-          </ListItem>
-        ))}
+        {categories &&
+          categories.map((category, index) => (
+            <div
+              key={index}
+              onClick={() => {
+                props.selectedCategory(category.id);
+              }}
+            >
+              <ListItem button>
+                <ListItemIcon>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {/* <img src={require(category.img)} alt=""/> */}
+                </ListItemIcon>
+                <ListItemText primary={category.categoryName} />
+              </ListItem>
+            </div>
+          ))}
       </List>
     </div>
   );
-  console.log(Array(user.categories),"LENGTH OF CATEGORIES")
-  if (user.categories !== undefined) {
+
+  // console.log(Array(user.categories),"LENGTH OF CATEGORIES")
+  // console.log(user === null, "VALUE");
+  if (user !== null) {
     // const container = window !== undefined ? () => window().document.body : undefined;
-  
+    // console.log("USER-SIDENAVBAR", user);
     return (
-      <div className={classes.root}>
+      <div className={`${classes.root} mt-5`}>
         <nav className={classes.drawer}>
           <Hidden implementation="css">
             <Drawer
@@ -95,7 +107,14 @@ const SideNavbar = (props) => {
               variant="permanent"
               open
             >
-              {drawer}
+              {user.categories ? (
+                drawer
+              ) : (
+                <h5 style={{ marginTop: "80px", marginLeft: "23px" }}>
+                  {" "}
+                  Please Add category
+                </h5>
+              )}
             </Drawer>
           </Hidden>
         </nav>
@@ -103,7 +122,7 @@ const SideNavbar = (props) => {
     );
   } else {
     return (
-      <div className={classes.root}>
+      <div className={`${classes.root} mt-5`}>
         <nav className={classes.drawer}>
           <Hidden implementation="css">
             <Drawer
@@ -118,7 +137,7 @@ const SideNavbar = (props) => {
                   <ListItemText primary="No category" />
                 </ListItem>
               </List> */}
-              <div style={{marginTop:'100px'}}>Hello</div>
+              <div style={{ marginTop: "50px" }}>Please Add Category</div>
             </Drawer>
           </Hidden>
         </nav>

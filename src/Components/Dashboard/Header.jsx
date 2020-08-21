@@ -1,6 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../Assets/Styles/Header.css";
+import { editUser } from "../../Redux/Actions/userActions";
+
+import {  useDispatch, useSelector } from "react-redux";
+
 const Header = (props) => {
+
+const[user , setUser] = useState(props.user);
+const[categoryName,setCategoryName] = useState();
+const[amount,setAmount] = useState();
+const[image,setImage] = useState();
+const[leftAmount,setLeftAmount] = useState(0);
+
+ const dispatch = useDispatch();
+ 
+
+const userData = useSelector((state) => state.user.data);
+const isLoading = useSelector((state) => state.user.isLoading);
+const err = useSelector((state) => state.user.error);
+// useEffect( () => {
+//    dispatch( editUser());
+// //  setUser(userData)
+//   }, []);
+const clickOnSubmit = () => {
+  const tempUser = user;
+//  console.log(tempUser.categories , "LENGTH");
+  const object = {
+    id:tempUser.categories.length+1,
+    categoryName:categoryName,
+    enabled:true,
+    expenses:[],
+    image:image,
+    maxamount:amount
+  }
+   tempUser.categories.push(object);
+   setUser(tempUser);
+   dispatch( editUser(tempUser.id,tempUser));
+ //  console.log("User Array" , tempUser)
+} 
+
+
+
+
   return (
     <div>
       <nav
@@ -20,9 +61,10 @@ const Header = (props) => {
                   type="text"
                   className="form-control"
                   id="exampleFormControlInput1"
+                  value={leftAmount}
                //   placeholder="Name of Category"
                disabled={true}
-               value={100}
+            //   value={100}
                 />
               </div>
 
@@ -84,6 +126,7 @@ const Header = (props) => {
               <div className="form-group">
                 <label htmlFor="exampleFormControlInput1">Category Name</label>
                 <input
+                  onChange={(e) => { setCategoryName(e.target.value)}}
                   type="text"
                   className="form-control"
                   id="exampleFormControlInput1"
@@ -94,6 +137,7 @@ const Header = (props) => {
               <div className="mb-2">
                 <label className="file mt-3">
                   <input
+                   onChange={(e) => { setImage(e.target.value)}}
                     type="file"
                     id="file"
                     aria-label="File browser example"
@@ -108,6 +152,7 @@ const Header = (props) => {
                   <span className="input-group-text">$</span>
                 </div>
                 <input
+                 onChange={(e) => { setAmount(e.target.value)}}
                   type="text"
                   className="form-control"
                   aria-label="Amount (to the nearest dollar)"
@@ -126,7 +171,12 @@ const Header = (props) => {
               >
                 Close
               </button>
-              <button type="button" className="btn btn-primary">
+              <button 
+              type="button" 
+              data-dismiss="modal"
+              className="btn btn-primary"
+              onClick={clickOnSubmit}
+              >
                 Save changes
               </button>
             </div>

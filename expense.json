@@ -8,32 +8,93 @@
       "designation": "ufhg",
       "address": "fghgh gnghng",
       "categories": [
-                      {
-                           "id":1,
-                           "categoryName": "Food Expense",
-                          "maxamount": 1000,
-                           "image": "blob:http://localhost:3000/ef0170fe-932f-42ac-9af1-848b65955d9c",
-                             "enabled": true,
-                             "expenses":[
-                                                   {
-                                                      "id":1,
-                                                      "description": "food1",
-                                                      "spentAmount": 100,
-                                                      "image": "blob:http://localhost:3000/5ff6c9da-ebef-4b8a-80dc-fc68ee2e045b"
-                                                   },
-                                                   {
-                                                       "id":2,
-                                                       "description": "food2",
-                                                       "spentAmount": 300,
-                                                       "image": "blob:http://localhost:3000/5ff6c9da-ebef-4b8a-80dc-fc68ee2e045b"
-                                                   }
-                                          ]
-                        }
-                    ]
-         },
-
-
-
+        {
+          "id": 1,
+          "categoryName": "Food Expense",
+          "maxamount": 1000,
+          "image": "blob:http://localhost:3000/ef0170fe-932f-42ac-9af1-848b65955d9c",
+          "enabled": true,
+          "expenses": [
+            {
+              "id": 1,
+              "name": "Burger",
+              "description": "food1",
+              "spentAmount": 100,
+              "image": "blob:http://localhost:3000/5ff6c9da-ebef-4b8a-80dc-fc68ee2e045b"
+            },
+            {
+              "id": 2,
+              "name": "paratha",
+              "description": "food2",
+              "spentAmount": 300,
+              "image": "blob:http://localhost:3000/5ff6c9da-ebef-4b8a-80dc-fc68ee2e045b"
+            },
+            {
+              "id": 3,
+              "name": "Thepla",
+              "description": "efcseffc",
+              "spentAmount": "3443",
+              "image": "C:\\fakepath\\18296.jpg"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "categoryName": "Sports",
+          "enabled": true,
+          "expenses": [
+            {
+              "id": 1,
+              "name": "racket",
+              "description": "badminton",
+              "spentAmount": 100,
+              "image": "blob:http://localhost:3000/5ff6c9da-ebef-4b8a-80dc-fc68ee2e045b"
+            },
+            {
+              "id": 2,
+              "name": "ball",
+              "description": "football",
+              "spentAmount": 300,
+              "image": "blob:http://localhost:3000/5ff6c9da-ebef-4b8a-80dc-fc68ee2e045b"
+            }
+          ],
+          "image": "C:\\fakepath\\DEMOmeme.jfif",
+          "maxamount": "3443"
+        },
+        {
+          "id": 3,
+          "categoryName": "Dance",
+          "enabled": true,
+          "expenses": [],
+          "image": "C:\\fakepath\\18296.jpg",
+          "maxamount": "12347"
+        },
+        {
+          "id": 4,
+          "categoryName": "Chacha",
+          "enabled": true,
+          "expenses": [
+            {
+              "id": 1,
+              "name": "Chaha1",
+              "description": "fdwe",
+              "spentAmount": "efwefw",
+              "image": "C:\\fakepath\\DEMOmeme.jfif"
+            }
+          ],
+          "image": "C:\\fakepath\\18296.jpg",
+          "maxamount": "3443"
+        },
+        {
+          "id": 5,
+          "categoryName": "Heloo",
+          "enabled": true,
+          "expenses": [],
+          "image": "C:\\fakepath\\18296.jpg",
+          "maxamount": "24324"
+        }
+      ]
+    },
     {
       "id": 2,
       "name": "Daksh",
@@ -41,41 +102,39 @@
       "contact": "9890786756",
       "designation": "gateway",
       "address": "bodakdev ahmedabad",
-      "categories":[
-                          {
-                              "id":1,          
-                              "categoryName": "Sports Expense",
-                              "maxamount": 5000,
-                              "image": "blob:http://localhost:3000/ef0170fe-932f-42ac-9af1-848b65955d9c",
-                              "enabled": true,
-                              "expenses":[
-                                          {
-                                             "id":1,
-                                             "description": "badminton",
-                                             "spentAmount": 100,
-                                             "image": "blob:http://localhost:3000/5ff6c9da-ebef-4b8a-80dc-fc68ee2e045b"
-                                          },
-                                          {
-                                              "id":2,
-                                              "description": "football",
-                                              "spentAmount": 300,
-                                              "image": "blob:http://localhost:3000/5ff6c9da-ebef-4b8a-80dc-fc68ee2e045b"
-                                          }
-                                        ]
-                           }
-                    ]
-        },
+      "categories": [
         {
-          "id": 3,
-          "name": "Nihar",
-          "email": "fef@gmail.com",
-          "contact": "9893486756",
-          "designation": "gateway",
-          "address": "surat "
-      
+          "id": 1,
+          "categoryName": "Sports Expense",
+          "maxamount": 5000,
+          "image": "blob:http://localhost:3000/ef0170fe-932f-42ac-9af1-848b65955d9c",
+          "enabled": true,
+          "expenses": [
+            {
+              "id": 1,
+              "name": "racket",
+              "description": "badminton",
+              "spentAmount": 100,
+              "image": "blob:http://localhost:3000/5ff6c9da-ebef-4b8a-80dc-fc68ee2e045b"
+            },
+            {
+              "id": 2,
+              "name": "ball",
+              "description": "football",
+              "spentAmount": 300,
+              "image": "blob:http://localhost:3000/5ff6c9da-ebef-4b8a-80dc-fc68ee2e045b"
             }
-
-
-]
- 
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Nihar",
+      "email": "fef@gmail.com",
+      "contact": "9893486756",
+      "designation": "gateway",
+      "address": "surat "
+    }
+  ]
 }
