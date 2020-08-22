@@ -11,7 +11,7 @@ export const Dashboard = (props) => {
   const dispatch = useDispatch();
  
   useEffect( () => {
-     dispatch( getUser(1));
+     dispatch( getUser(3));
     setUser(userData)
     }, []);
   const userData = useSelector((state) => state.user.data);
@@ -24,13 +24,13 @@ export const Dashboard = (props) => {
 const settingCategory = (id) => {
  
 const index =  userData.categories.findIndex(category => (category.id === id) )
-//console.log("SLECTED CATEGORY" ,index)
+console.log("SLECTED CATEGORY" ,index)
 setSelectedCategory(index);
 }
 
 const clickOnEdit = (id) => {
   seteditId(id);
-console.log("ID",id);
+//console.log("ID",id);
 }
   
  
@@ -47,7 +47,10 @@ console.log("ID",id);
   // console.log("ELSE RENDER", userData);
     return (
       <div>
-        <Header user={userData} />
+        <Header 
+        user={userData}
+        selectedCategory={selectedCategory}
+         />
         <div className="row ">
           <div className="col-3">
             <SideNavbar
@@ -58,17 +61,26 @@ console.log("ID",id);
           <div className="col-9 p-0">
             <div className="row" style={{ marginTop: "60px" }}>
               <div className="col-7 mt-2">
-                <DisplayExpense 
-                user={userData} 
-                clickOnEdit={clickOnEdit}
-               expenses={userData.categories[selectedCategory].expenses} 
-                />
+               {(Object.keys(userData.categories).length !==0) ?
+              <DisplayExpense 
+              user={userData} 
+              clickOnEdit={clickOnEdit}
+             expenses={userData.categories[selectedCategory].expenses} 
+             selectedCategory={selectedCategory}
+              />:
+              <div>No expenses First Add CATEGORY</div> 
+              }
+                
               </div>
               <div className="col-5 give-padding-margin ">
-                <AddExpense 
-                editId = {editId}
-                selectedCategory ={selectedCategory}
-                user={userData} />
+              {(Object.keys(userData.categories).length !==0) ?
+            <AddExpense 
+            editId = {editId}
+            selectedCategory ={selectedCategory}
+            user={userData} />
+              :
+              <div>ADD category First </div> 
+              }
               </div>
             </div>
           </div>

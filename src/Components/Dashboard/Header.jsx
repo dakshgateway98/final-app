@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../Assets/Styles/Header.css";
 import { editUser } from "../../Redux/Actions/userActions";
 
@@ -7,6 +7,18 @@ import {  useDispatch, useSelector } from "react-redux";
 const Header = (props) => {
 
 const[user , setUser] = useState(props.user);
+
+// find left Amount
+// useEffect()(
+
+// if(Object.keys(userData.categories).length !==0){
+//   user.categories[props.selectedCategory].expenses.map()
+// }
+// )
+
+
+
+
 const[categoryName,setCategoryName] = useState();
 const[amount,setAmount] = useState();
 const[image,setImage] = useState();
@@ -22,6 +34,25 @@ const err = useSelector((state) => state.user.error);
 //    dispatch( editUser());
 // //  setUser(userData)
 //   }, []);
+
+useEffect( () => {
+  
+  if(Object.keys(userData.categories).length !==0)
+  {
+    var sum = 0;
+  
+    user.categories[props.selectedCategory].expenses.map(expense => {
+      sum=sum+Number(expense.spentAmount)
+    })
+
+    console.log("SUM FOR " , sum)
+ setLeftAmount(user.categories[props.selectedCategory].maxamount - sum )
+  }
+  
+  
+   }, []);
+
+
 const clickOnSubmit = () => {
   const tempUser = user;
 //  console.log(tempUser.categories , "LENGTH");
@@ -48,9 +79,9 @@ const clickOnSubmit = () => {
         className="navbar navbar-light increment-z-index give-height w-100"
         style={{ backgroundColor: "#e3f2fd" , position:"fixed"}}
       >
-        <div className="col-4 h-100 d-flex align-items-center">
+        <div className="col-4 h-100 d-flex align-items-center h4">
             {/* <img src={require("../../Assets/Images/logo-header.PNG")} alt=""  height={10 } width={10}/> */}
-            LOGO
+            {user.name}
         </div>
         <div className="col-4 h-100 d-flex justify-content-center">
 

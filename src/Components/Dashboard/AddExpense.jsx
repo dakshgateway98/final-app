@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect ,useRef } from "react";
 import "../../Assets/Styles/AddExpense.css";
 import { useDispatch, useSelector } from "react-redux";
 import { editUser } from "../../Redux/Actions/userActions";
@@ -9,7 +9,7 @@ export const AddExpense = (props) => {
   const [expenseName, setExpenseName] = useState();
   const [description, setDescription] = useState();
   const [price, setPrice] = useState();
-  const [image, setImage] = useState();
+  const [image, setImage] = useState('');
   //const [editId, seteditId] = useState();
 
   const dispatch = useDispatch();
@@ -18,31 +18,80 @@ export const AddExpense = (props) => {
   const isLoading = useSelector((state) => state.user.isLoading);
   const err = useSelector((state) => state.user.error);
 
-  const clickOnEditExpense = () => {};
+  const clickOnEditExpense = () => {
+    if (editId !== null) {
+      const tempUser = user;
+     // console.log(tempUser, "ADD EXPENSE");
+      const editedExpense = {
+        id: editId,
+        name: expenseName,
+        description: description,
+        spentAmount: price,
+        image: image,
+      };
+      const index = tempUser.categories[selectedCategory].expenses.findIndex(
+        (expense) => expense.id === editId
+      );
+      tempUser.categories[selectedCategory].expenses[index] = editedExpense;
+    
+      setUserAdd(tempUser);
+      dispatch(editUser(tempUser.id, tempUser));
+      setExpenseName('');
+      setDescription('');
+      setPrice('');
+     // setImage('');
+     console.log("MYDATA", expenseName,description,price);
+    }
+  };
 
-  useEffect(() => {
-    console.log("USEEFFECT");
+  // useEffect(() => {
+  //   console.log("USEEFFECT");
+  //   if (editId !== null) {
+  //     const expense = user.categories[selectedCategory].expenses.filter(
+  //       (expense) => expense.id === editId
+  //     );
+  //   //  console.log("EXPENSE", expense[0]);
+  //     // if( expense[0] !== undefined){
+  //     // setExpenseName(expense[0].name);
+  //     // setDescription(expense[0].description);
+  //     // setPrice(expense[0].spentAmount);
+  //     // setImage(expense[0].image);
+  //     // }
+  //   }
+  // }, [editId]);
+
+
+  const isFirstRun = useRef(true);
+  useEffect (() => {
+      if (isFirstRun.current) {
+          isFirstRun.current = false;
+          return;
+      }
+       console.log("USEEFFECT");
     if (editId !== null) {
       const expense = user.categories[selectedCategory].expenses.filter(
         (expense) => expense.id === editId
       );
-      console.log("EXPENSE", expense);
-      // setExpenseName(expense[0].name);
-      // setDescription(expense[0].description);
-      // setPrice(expense[0].spentAmount);
-      // setImage(expense[0].image);
+     console.log("EXPENSE", expense[0]);
+      if( expense[0] !== undefined){
+      setExpenseName(expense[0].name);
+      setDescription(expense[0].description);
+      setPrice(expense[0].spentAmount);
+      setImage(expense[0].image);
+      }
     }
   }, [editId]);
 
+
+
   const clickOnAddExpense = () => {
+    //   console.log(tempUser, "ADD EXPENSE");
     const tempUser = user;
-    console.log(tempUser, "ADD EXPENSE");
-    const len = Object.keys(tempUser.categories[selectedCategory].expenses)
-      .length;
-    const id = tempUser.categories[selectedCategory].expenses[len - 1].id;
     if (
       Object.keys(tempUser.categories[selectedCategory].expenses).length === 0
     ) {
+     
+    //  console.log("ADD EXPENSE");
       const object = {
         id: 1,
         name: expenseName,
@@ -50,13 +99,22 @@ export const AddExpense = (props) => {
         spentAmount: price,
         image: image,
       };
-      tempUser.categories[selectedCategory].expenses.push(object);
+
+    //  console.log("EXPENSE" ,object );
+    //  console.log("TEMPUSER PUSH", tempUser.categories[selectedCategory].expenses.push(object));
+    //  console.log("TEMP USER" ,tempUser);
+    tempUser.categories[selectedCategory].expenses.push(object);
       setUserAdd(tempUser);
       dispatch(editUser(tempUser.id, tempUser));
-      console.log("EXPENSE LENGTH", 0);
+     
     } else {
+     
+      const len = Object.keys(tempUser.categories[selectedCategory].expenses)
+        .length;
+      const id = tempUser.categories[selectedCategory].expenses[len - 1].id;
+
       const object = {
-        id: id,
+        id: id + 1,
         name: expenseName,
         description: description,
         spentAmount: price,
@@ -133,11 +191,12 @@ export const AddExpense = (props) => {
             onChange={(e) => {
               setImage(e.target.value);
             }}
-            value={image}
+            //  value={image}
             type="file"
             id="file"
             aria-label="File browser example"
           />
+          {/* <img src={require(image)} alt={`${image}`}/> */}
           <span className="file-custom"></span>
         </label>
 
