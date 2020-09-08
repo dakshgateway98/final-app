@@ -11,7 +11,7 @@ export const Dashboard = (props) => {
   const dispatch = useDispatch();
  
   useEffect( () => {
-     dispatch( getUser(3));
+     dispatch( getUser(5));
     setUser(userData)
     }, []);
   const userData = useSelector((state) => state.user.data);

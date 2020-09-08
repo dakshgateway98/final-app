@@ -3,6 +3,7 @@
     {
       "id": 1,
       "name": "Khizir",
+      "password": "1234",
       "email": "khizir@gmail.com",
       "contact": "9898985656",
       "designation": "ufhg",
@@ -84,6 +85,7 @@
     {
       "id": 2,
       "name": "Daksh",
+      "password": "1234",
       "email": "daksh@gmail.com",
       "contact": "9890786756",
       "designation": "gateway",
@@ -117,6 +119,7 @@
     {
       "id": 3,
       "name": "Nihar",
+      "password": "1234",
       "email": "fef@gmail.com",
       "contact": "9893486756",
       "designation": "gateway",
@@ -130,13 +133,6 @@
             {
               "id": 1,
               "name": "Sports2",
-              "description": "cefs",
-              "spentAmount": "43",
-              "image": "C:\\fakepath\\DEMOmeme.jfif"
-            },
-            {
-              "id": 3,
-              "name": "Sports3",
               "description": "cefs",
               "spentAmount": "43",
               "image": "C:\\fakepath\\DEMOmeme.jfif"
@@ -169,6 +165,113 @@
           "maxamount": "1000"
         }
       ]
+    },
+    {
+      "name": "Mayuresh",
+      "password": "1234",
+      "email": "mayu@mail.com",
+      "contact": "986547123",
+      "designation": "csesvesv",
+      "address": "bfgbgbfbnftnrt",
+      "categories": [
+        {
+          "id": 1,
+          "categoryName": "Sports",
+          "enabled": true,
+          "expenses": [],
+          "image": "C:\\fakepath\\Image.PNG",
+          "maxamount": "3443"
+        },
+        {
+          "id": 2,
+          "categoryName": "FOOD",
+          "enabled": true,
+          "expenses": [
+            {
+              "id": 1,
+              "name": "FOOD 1",
+              "description": "efesfs",
+              "spentAmount": "10",
+              "image": "C:\\fakepath\\pic2.jpeg"
+            }
+          ],
+          "image": "C:\\fakepath\\Image.PNG",
+          "maxamount": "1200"
+        },
+        {
+          "id": 3,
+          "categoryName": "badmintion",
+          "enabled": true,
+          "expenses": [
+            {
+              "id": 1,
+              "name": "Sports",
+              "description": "btgbrb",
+              "spentAmount": "344",
+              "image": "C:\\fakepath\\Image.PNG"
+            },
+            {
+              "id": 2,
+              "name": "FOO",
+              "description": "cvedvced",
+              "spentAmount": "123",
+              "image": "C:\\fakepath\\Image.PNG"
+            },
+            {
+              "id": 3,
+              "name": "FOOD2",
+              "description": "cvedvced",
+              "spentAmount": "ved",
+              "image": "C:\\fakepath\\Image.PNG"
+            }
+          ],
+          "image": "C:\\fakepath\\Image.PNG",
+          "maxamount": "344"
+        }
+      ],
+      "id": 4
+    },
+    {
+      "name": "Divya",
+      "email": "divya@gmail.com",
+      "contact": "9087898987",
+      "designation": "blvedbnvb",
+      "address": "vbesjvbhrsdlvbsrlk",
+      "categories": [
+        {
+          "id": 1,
+          "categoryName": "Khana Pina",
+          "enabled": true,
+          "expenses": [
+            {
+              "id": 1,
+              "name": "Burger",
+              "description": "gsdrvserv",
+              "spentAmount": "23",
+              "image": "C:\\fakepath\\pic1.jpg"
+            }
+          ],
+          "image": "C:\\fakepath\\airbnbpic.PNG",
+          "maxamount": "3443"
+        },
+        {
+          "id": 2,
+          "categoryName": "DANCE",
+          "enabled": true,
+          "expenses": [
+            {
+              "id": 1,
+              "name": "FOOD2",
+              "description": "fwefwf",
+              "spentAmount": "123",
+              "image": "C:\\fakepath\\airbnbpic.PNG"
+            }
+          ],
+          "image": "C:\\fakepath\\pic1.jpg",
+          "maxamount": "234"
+        }
+      ],
+      "id": 5
     }
   ]
 }

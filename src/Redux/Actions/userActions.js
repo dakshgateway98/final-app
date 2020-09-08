@@ -3,6 +3,9 @@ import {
     GET_USER_REQUEST,
     GET_USER_SUCCESS,
     GET_USER_FAIL,
+    GET_ALL_USER_REQUEST,
+    GET_ALL_USER_SUCCESS,
+    GET_ALL_USER_FAIL,
     CREATE_USER_REQUEST,
     CREATE_USER_SUCCESS,
     CREATE_USER_FAIL,
@@ -136,3 +139,48 @@ export const editUser = (id, user) => {
             });
     };
 }
+
+
+
+// Get ALL USER
+const getAllUserRequest = () => {
+    return {
+      type: GET_ALL_USER_REQUEST,
+    };
+  };
+  
+  const getAllUserSuccess = (json) => {
+    return {
+      type: GET_ALL_USER_SUCCESS,
+      data: json,
+    };
+  };
+  
+  export const getAllUser = (id) => {
+    //console.log("Function call");
+    return (dispatch) => {
+     // console.log("Action Inside Dispatch");
+      dispatch(getAllUserRequest());
+  
+      //Alternate way
+      //dispatch({ type: USERINFO_FAIL, data: json });
+  
+          return axios.get(`http://localhost:3333/users`, { timeout: 20000 })
+              .then(response => response.data)
+              .then(json => {
+                 
+                  if(json){
+                      return (dispatch(getAllUserSuccess(json)));
+                  }
+                  else{
+                      return (dispatch({ type: GET_ALL_USER_FAIL, error: "Not Found" ,data:[]}));
+                  }
+              })
+              .catch(err => {
+                  console.error(err);
+                  //return dispatch(errorServer(err));
+                  return dispatch({ type: GET_ALL_USER_FAIL, error: err, data: [] });
+              });
+      };
+  }
+  

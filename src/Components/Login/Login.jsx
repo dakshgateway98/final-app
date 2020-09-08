@@ -1,20 +1,73 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 //import { connect } from 'react-redux';
 import "../../Assets/Styles/Login.css";
 import { useGoogleLogin, GoogleLogin, GoogleLogout } from "react-google-login";
 //import {  MDBRow } from "mdbreact";
+import { getAllUser } from "./../../Redux/Actions/userActions";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { MDBCol, MDBCard, MDBCardImage, MDBInput } from "mdbreact";
 import { MDBCardBody } from "mdbreact";
 
-const responseGoogle = (response) => {
-  console.log(response);
-};
-const logout = (res) => {
-  console.log("LOGOUT", res);
-};
+const Login = (props) => {
 
-const Login = () => {
+
+
+
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  const responseGoogle = (response) => {
+    console.log(response);
+  };
+
+  const logout = (res) => {
+    console.log("LOGOUT", res);
+  };
+
+  const dispatch = useDispatch();
+
+  const allUserData = useSelector((state) => state.user.data);
+  const isLoading = useSelector((state) => state.user.isLoading);
+  const err = useSelector((state) => state.user.error);
+
+  useEffect(() => {
+    dispatch(getAllUser());
+  }, []);
+
+  const clickOnSignIn = () => {
+    console.log("ALLUSERDATA", allUserData);
+
+    let flag = false;
+
+    allUserData.map((user) => {
+      if (
+        email === user.email &&
+        password === user.password
+      ) {
+        localStorage.setItem("userToken", user.name + user.contact );
+      
+        flag = true;
+      }
+    });
+    if (flag === true) {
+      return props.history.push({
+        pathname: "/dashboard",
+        //  state: { name: localStorage.getItem('name') }
+      });
+    } else {
+     // console.log("dwdw");
+     alert("Wrong username");
+  //    toast.error("Wrong username");
+      setEmail();
+      setPassword();
+
+      return props.history.push({
+        pathname: "/",
+      });
+    }
+  };
+
   return (
     <div className="make-it-center w-50 ">
       <MDBCol md="8" lg="8" sm="8">
@@ -43,10 +96,11 @@ const Login = () => {
                 <MDBInput
                   label="Email"
                   icon="envelope"
-                  name="emailForLogin"
-                  //  onChange={this.props.handleInputChangesForLogin}
-
-                  //       value={this.props.emailForLogin}
+                  name="email"
+                  onChange={(event) => {
+                    setEmail(event.target.value);
+                  }}
+                  value={email}
                   type="text"
                 />
                 {/* <small className="form-text text-danger">{this.props.errors.emailForLogin}</small> */}
@@ -54,11 +108,13 @@ const Login = () => {
               <div>
                 <MDBInput
                   label="Password"
-                  name="passwordForLogin"
+                  name="password"
                   icon="lock"
                   //    onChange={this.props.handleInputChangesForLogin}
-
-                  //   value={this.props.passwordForLogin}
+                  onChange={(event) => {
+                    setPassword(event.target.value);
+                  }}
+                  value={password}
                   type="password"
                 />
                 {/* <small className="form-text text-danger">{props.errors.passwordForLogin}</small>
@@ -66,8 +122,9 @@ const Login = () => {
               </div>
 
               <button
+                type="button"
                 className="btn btn-dark  btn-block"
-                //   onClick={this.props.handleSubmit}
+                onClick={clickOnSignIn}
               >
                 Sign In
               </button>

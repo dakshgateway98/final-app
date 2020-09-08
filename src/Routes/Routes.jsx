@@ -8,6 +8,7 @@ import {
 import Login from '../Components/Login/Login';
 import SignUp from "../Components/Login/SignUp";
 import { Dashboard } from "../Components/Dashboard/Dashboard";
+import PrivateRoutesForLogin from "./PrivateRoutesForLogin";
 
 const Routes = () => {
   return (
@@ -19,7 +20,7 @@ const Routes = () => {
           </Route>
           <Route component={Login} path="/login" />
           <Route component={SignUp} path="/signup" />
-          <Route component={Dashboard} path="/dashboard" />
+          <PrivateRoutesForLogin component={Dashboard} path="/dashboard" />
         </Switch>
       </Router>
     </div>
