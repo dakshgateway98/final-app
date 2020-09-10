@@ -10,10 +10,6 @@ import { MDBCol, MDBCard, MDBCardImage, MDBInput } from "mdbreact";
 import { MDBCardBody } from "mdbreact";
 
 const Login = (props) => {
-
-
-
-
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
@@ -46,7 +42,7 @@ const Login = (props) => {
         password === user.password
       ) {
         localStorage.setItem("userToken", user.name + user.contact );
-      
+        localStorage.setItem("id" ,user.id)
         flag = true;
       }
     });

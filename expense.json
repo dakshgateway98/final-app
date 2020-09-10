@@ -18,10 +18,10 @@
           "expenses": [
             {
               "id": 1,
-              "name": "Burg",
-              "description": "Jvnrenvkle",
-              "spentAmount": "10",
-              "image": "blob:http://localhost:3000/5ff6c9da-ebef-4b8a-80dc-fc68ee2e045b"
+              "name": "Football",
+              "description": "fewf",
+              "spentAmount": "30",
+              "image": "C:\\fakepath\\airbnbpic.PNG"
             }
           ]
         },
@@ -32,7 +32,7 @@
           "expenses": [
             {
               "id": 1,
-              "name": "racket",
+              "name": "racket6",
               "description": "badminton",
               "spentAmount": 100,
               "image": "blob:http://localhost:3000/5ff6c9da-ebef-4b8a-80dc-fc68ee2e045b"
@@ -65,7 +65,7 @@
               "id": 1,
               "name": "Chaha1",
               "description": "fdwe",
-              "spentAmount": "efwefw",
+              "spentAmount": 12,
               "image": "C:\\fakepath\\DEMOmeme.jfif"
             }
           ],
@@ -272,6 +272,106 @@
         }
       ],
       "id": 5
+    },
+    {
+      "name": "Vikash",
+      "email": "vikash@gmail.com",
+      "contact": "4567896325",
+      "designation": "vergvergbhh",
+      "address": "bfgbgbfbnftnrt",
+      "password": "1234",
+      "categories": [
+        {
+          "id": 1,
+          "categoryName": "Sports",
+          "enabled": true,
+          "expenses": [
+            {
+              "id": 1,
+              "name": "badmintion",
+              "description": "fwefwfwfew",
+              "spentAmount": "10",
+              "image": "C:\\fakepath\\pic1.jpg"
+            },
+            {
+              "id": 2,
+              "name": "badmintion Racket",
+              "description": "fwefwfwfew",
+              "spentAmount": "10",
+              "image": "C:\\fakepath\\pic1.jpg"
+            }
+          ],
+          "image": "C:\\fakepath\\logo.png",
+          "maxamount": "1200"
+        },
+        {
+          "id": 2,
+          "categoryName": "FOOD",
+          "enabled": true,
+          "expenses": [
+            {
+              "id": 1,
+              "name": "Burg",
+              "description": "vrsd",
+              "spentAmount": "43",
+              "image": "C:\\fakepath\\airbnbpic.PNG"
+            }
+          ],
+          "image": "C:\\fakepath\\pic3.jpg",
+          "maxamount": "1300"
+        }
+      ],
+      "id": 6
+    },
+    {
+      "name": "Shivani",
+      "email": "shivani@gmail.com",
+      "contact": "9865741235",
+      "designation": "gefgvdfgrf",
+      "address": "bfgbgbfbnftn",
+      "password": "1234",
+      "categories": [
+        {
+          "id": 1,
+          "categoryName": "FOOD",
+          "enabled": true,
+          "expenses": [
+            {
+              "id": 1,
+              "name": "Burg",
+              "description": "fewe",
+              "spentAmount": "25",
+              "image": "C:\\fakepath\\pic1.jpeg"
+            }
+          ],
+          "image": "C:\\fakepath\\airbnbpic.PNG",
+          "maxamount": "1234"
+        },
+        {
+          "id": 2,
+          "categoryName": "Sports",
+          "enabled": true,
+          "expenses": [
+            {
+              "id": 1,
+              "name": "badmintion",
+              "description": "fewfe",
+              "spentAmount": "43",
+              "image": "C:\\fakepath\\airbnbpic.PNG"
+            },
+            {
+              "id": 2,
+              "name": "badmintion2",
+              "description": "fesfs",
+              "spentAmount": "43",
+              "image": "C:\\fakepath\\first.jpg"
+            }
+          ],
+          "image": "C:\\fakepath\\pic1.jpeg",
+          "maxamount": "1234"
+        }
+      ],
+      "id": 7
     }
   ]
 }

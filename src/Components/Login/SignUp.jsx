@@ -27,9 +27,10 @@ const SignUp = (props) => {
       contact: contact,
       designation: designation,
       address: adderss,
+      password:password,
       categories: []
     }
-    console.log("USER BANA")
+  //  console.log("USER BANA")
   //  setUserAdd(tempUser);
     dispatch(createUser(userObject));
 

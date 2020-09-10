@@ -65,6 +65,9 @@ const  ExpenseCard = (props) => {
           <Typography gutterBottom  component="h5">
             {expe.description}
           </Typography>
+          <Typography gutterBottom  component="h5">
+            {expe.spentAmount}
+          </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
