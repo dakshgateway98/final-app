@@ -17,6 +17,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { connect } from "react-redux";
+import "../../Assets/Styles/SideNavbar.css";
 
 const drawerWidth = 240;
 
@@ -72,12 +73,14 @@ const SideNavbar = (props) => {
       <List>
         {categories &&
           categories.map((category, index) => (
+            
             <div
               key={index}
               onClick={() => {
                 props.selectedCategory(category.id);
               }}
             >
+              <div className={`${category.enabled?"":"display-none"}`}>
               <ListItem button>
                 <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -85,6 +88,7 @@ const SideNavbar = (props) => {
                 </ListItemIcon>
                 <ListItemText primary={category.categoryName} />
               </ListItem>
+              </div>
             </div>
           ))}
       </List>

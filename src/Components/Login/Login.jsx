@@ -3,7 +3,7 @@ import React, { Component, useState, useEffect } from "react";
 import "../../Assets/Styles/Login.css";
 import { useGoogleLogin, GoogleLogin, GoogleLogout } from "react-google-login";
 //import {  MDBRow } from "mdbreact";
-import { getAllUser } from "./../../Redux/Actions/userActions";
+import { getAllUser, createUser } from "./../../Redux/Actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { MDBCol, MDBCard, MDBCardImage, MDBInput } from "mdbreact";
@@ -12,16 +12,47 @@ import { MDBCardBody } from "mdbreact";
 const Login = (props) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const dispatch = useDispatch();
 
-  const responseGoogle = (response) => {
-    console.log(response);
+  const responseGoogle = async (response) => {
+    const { profileObj } = response;
+    const checkExistUser = allUserData.filter(
+      (x) => x.email === profileObj.email
+    );
+    console.log("CHECK", checkExistUser);
+    if (Object.keys(checkExistUser).length === 1) {
+      console.log("USER EXIST", checkExistUser);
+    } else if(Object.keys(checkExistUser).length === 0){
+      console.log("CREATE NEW USER",checkExistUser);
+    }
+    else{
+      return (<div>Something Went Wrong</div>)
+    }
+    // console.log("responseGoogle",profileObj);
+    // let lastUser = allUserData[Object.keys(allUserData).length - 1]
+    // console.log(allUserData,"ALL DATA")
+    // const userObject = {
+    //   id:lastUser.id+1,
+    //   name: profileObj.name,
+    //   email: profileObj.email,
+    //   contact: "9090909090",
+    //   designation: "default",
+    //   address: "default",
+    //   password:"default",
+    //   categories: []
+    // }
+    // await  localStorage.setItem("id",lastUser.id+1);
+    // await localStorage.setItem("userToken", userObject.name + userObject.contact );
+    // await  dispatch(createUser(userObject));
+    // return props.history.push({
+    //   pathname: "/dashboard",
+    //   //  state: { name: localStorage.getItem('name') }
+    // });
   };
 
   const logout = (res) => {
     console.log("LOGOUT", res);
   };
-
-  const dispatch = useDispatch();
 
   const allUserData = useSelector((state) => state.user.data);
   const isLoading = useSelector((state) => state.user.isLoading);
@@ -37,12 +68,9 @@ const Login = (props) => {
     let flag = false;
 
     allUserData.map((user) => {
-      if (
-        email === user.email &&
-        password === user.password
-      ) {
-        localStorage.setItem("userToken", user.name + user.contact );
-        localStorage.setItem("id" ,user.id)
+      if (email === user.email && password === user.password) {
+        localStorage.setItem("userToken", user.name + user.contact);
+        localStorage.setItem("id", user.id);
         flag = true;
       }
     });
@@ -52,9 +80,9 @@ const Login = (props) => {
         //  state: { name: localStorage.getItem('name') }
       });
     } else {
-     // console.log("dwdw");
-     alert("Wrong username");
-  //    toast.error("Wrong username");
+      // console.log("dwdw");
+      alert("Wrong username");
+      //    toast.error("Wrong username");
       setEmail();
       setPassword();
 

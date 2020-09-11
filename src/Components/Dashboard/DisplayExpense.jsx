@@ -22,11 +22,11 @@ export const DisplayExpense = (props) => {
       })
   
       console.log("SUM FOR " , sum)
-      setRemainAmount(user.categories[props.selectedCategory].maxamount - sum )
+      setRemainAmount(Number(user.categories[props.selectedCategory].maxamount) - sum )
     }
     
     
-     }, []);
+     }, [selectedCategory]);
   //    useEffect( () => {
 
   //    }, [expenses]);

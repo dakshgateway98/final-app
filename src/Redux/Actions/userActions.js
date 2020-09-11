@@ -116,7 +116,7 @@ const editUserReceiveData = (json) => {
 }
 
 export const editUser = (id, user) => {
-  
+  console.log("ACTION USER",user)
     return dispatch => {
         dispatch(editUserRequest());
 
@@ -124,14 +124,18 @@ export const editUser = (id, user) => {
         //dispatch({ type: USERINFO_FAIL, data: json });
 
         return axios.patch(`http://localhost:3333/users/${id}`, user)
-            .then(response => response.data)
-            .then(json => {
-                if (json.Success === 'false') {
-                    return dispatch({ type: EDIT_USER_FAIL, data: json });
+            .then(response => {
+                
+            
+                
+                console.log(response)
+                if (response.status !== 200) {
+                    return dispatch({ type: EDIT_USER_FAIL, data: [] });
                 } else {
-                    return (dispatch(editUserReceiveData(json)));
+                    return (dispatch(editUserReceiveData(response.data)));
                 }
-            })
+            }
+            )
             .catch(err => {
                 console.error(err);
                 //return dispatch(errorServer(err));

@@ -12,73 +12,64 @@
         {
           "id": 1,
           "categoryName": "Food Expense",
-          "maxamount": 1000,
+          "maxamount": "5000",
           "image": "blob:http://localhost:3000/ef0170fe-932f-42ac-9af1-848b65955d9c",
-          "enabled": true,
+          "enabled": false,
           "expenses": [
             {
               "id": 1,
-              "name": "Football",
-              "description": "fewf",
-              "spentAmount": "30",
-              "image": "C:\\fakepath\\airbnbpic.PNG"
+              "name": "Nasta",
+              "description": "fewfw",
+              "spentAmount": "23",
+              "image": "C:\\fakepath\\pic1.jpeg"
+            },
+            {
+              "id": 2,
+              "name": "FOOD",
+              "description": "fw3rf3",
+              "spentAmount": "20",
+              "image": "C:\\fakepath\\pic1.jpeg"
             }
           ]
         },
         {
           "id": 2,
-          "categoryName": "Sports",
+          "categoryName": "DANCE",
           "enabled": true,
           "expenses": [
             {
               "id": 1,
-              "name": "racket6",
-              "description": "badminton",
-              "spentAmount": 100,
-              "image": "blob:http://localhost:3000/5ff6c9da-ebef-4b8a-80dc-fc68ee2e045b"
-            },
-            {
-              "id": 2,
-              "name": "ball",
-              "description": "football",
-              "spentAmount": 300,
-              "image": "blob:http://localhost:3000/5ff6c9da-ebef-4b8a-80dc-fc68ee2e045b"
+              "name": "Garba",
+              "description": "grgdgdgvd",
+              "spentAmount": "810",
+              "image": "C:\\fakepath\\pic3.jpg"
             }
           ],
-          "image": "C:\\fakepath\\DEMOmeme.jfif",
-          "maxamount": "3443"
+          "image": "C:\\fakepath\\pic1.jpeg",
+          "maxamount": "3000"
         },
         {
           "id": 3,
-          "categoryName": "Dance",
-          "enabled": true,
-          "expenses": [],
-          "image": "C:\\fakepath\\18296.jpg",
-          "maxamount": "12347"
-        },
-        {
-          "id": 4,
-          "categoryName": "Chacha",
+          "categoryName": "KHANA",
           "enabled": true,
           "expenses": [
             {
               "id": 1,
-              "name": "Chaha1",
-              "description": "fdwe",
-              "spentAmount": 12,
-              "image": "C:\\fakepath\\DEMOmeme.jfif"
+              "name": "pina",
+              "description": "fsefsef",
+              "spentAmount": "230",
+              "image": "C:\\fakepath\\pic1.jpeg"
+            },
+            {
+              "id": 2,
+              "name": "few",
+              "description": "efcwecrf",
+              "spentAmount": "40",
+              "image": "C:\\fakepath\\pic4.jpg"
             }
           ],
-          "image": "C:\\fakepath\\18296.jpg",
-          "maxamount": "3443"
-        },
-        {
-          "id": 5,
-          "categoryName": "Heloo",
-          "enabled": true,
-          "expenses": [],
-          "image": "C:\\fakepath\\18296.jpg",
-          "maxamount": "24324"
+          "image": "C:\\fakepath\\pic3.jpg",
+          "maxamount": "4000"
         }
       ]
     },
@@ -113,56 +104,6 @@
               "image": "blob:http://localhost:3000/5ff6c9da-ebef-4b8a-80dc-fc68ee2e045b"
             }
           ]
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "name": "Nihar",
-      "password": "1234",
-      "email": "fef@gmail.com",
-      "contact": "9893486756",
-      "designation": "gateway",
-      "address": "surat ",
-      "categories": [
-        {
-          "id": 1,
-          "categoryName": "Sports",
-          "enabled": true,
-          "expenses": [
-            {
-              "id": 1,
-              "name": "Sports2",
-              "description": "cefs",
-              "spentAmount": "43",
-              "image": "C:\\fakepath\\DEMOmeme.jfif"
-            }
-          ],
-          "image": "C:\\fakepath\\DEMOmeme.jfif",
-          "maxamount": "10"
-        },
-        {
-          "id": 2,
-          "categoryName": "DANCE",
-          "enabled": true,
-          "expenses": [
-            {
-              "id": 2,
-              "name": "FOODie",
-              "description": "dwqd",
-              "spentAmount": "344",
-              "image": "C:\\fakepath\\DEMOmeme.jfif"
-            },
-            {
-              "id": 3,
-              "name": "Sports30",
-              "description": "cefs",
-              "spentAmount": "43",
-              "image": "C:\\fakepath\\DEMOmeme.jfif"
-            }
-          ],
-          "image": "C:\\fakepath\\DEMOmeme.jfif",
-          "maxamount": "1000"
         }
       ]
     },
@@ -372,6 +313,59 @@
         }
       ],
       "id": 7
+    },
+    {
+      "name": "talha",
+      "email": "talha@gmail.com",
+      "contact": "7899632145",
+      "designation": "vergvergbhh",
+      "address": "bfgbgbfbnftnrt",
+      "password": "1234",
+      "categories": [
+        {
+          "id": 1,
+          "categoryName": "Sports",
+          "enabled": true,
+          "expenses": [
+            {
+              "id": 1,
+              "name": "badmintion",
+              "description": "fwefefwf",
+              "spentAmount": "20",
+              "image": "C:\\fakepath\\pic4.jpg"
+            }
+          ],
+          "image": "C:\\fakepath\\pic1.jpeg",
+          "maxamount": "12346"
+        },
+        {
+          "id": 2,
+          "categoryName": "FOOD",
+          "enabled": true,
+          "expenses": [
+            {
+              "id": 1,
+              "name": "Burg",
+              "description": "vregeg",
+              "spentAmount": "13",
+              "image": "C:\\fakepath\\pic1.jpeg"
+            }
+          ],
+          "image": "C:\\fakepath\\pic3.jpg",
+          "maxamount": "200"
+        }
+      ],
+      "id": 8
+    },
+    {
+      "name": "Daksh Patel",
+      "email": "daksh.patel@thegatewaycorp.com",
+      "contact": "9090909090",
+      "designation": "default",
+      "address": "default",
+      "password": "default",
+      "categories": [],
+      "id": 9
     }
   ]
 }
