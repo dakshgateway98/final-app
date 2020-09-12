@@ -8,18 +8,12 @@ import { Redirect, Link } from "react-router-dom";
 const Header = (props) => {
   const [user, setUser] = useState(props.user);
 
-  // find left Amount
-  // useEffect()(
-
-  // if(Object.keys(userData.categories).length !==0){
-  //   user.categories[props.selectedCategory].expenses.map()
-  // }
-  // )
-
   const [categoryName, setCategoryName] = useState();
+  const [categoryErr, setCategoryErr] = useState();
   const [amount, setAmount] = useState();
+  const [amountErr, setAmountErr] = useState();
   const [image, setImage] = useState();
-  const [leftAmount, setLeftAmount] = useState(0);
+  const [imageErr, setImageErr] = useState();
 
   const dispatch = useDispatch();
 
@@ -74,6 +68,50 @@ const Header = (props) => {
     // )
   };
 
+  const validateAmount = (value) => {
+    const nuberRegex =   new RegExp('^[0-9]+$');
+    if (value) {
+      if (!nuberRegex.test(value)) {
+        setAmountErr("Please Enter Number");
+      } else if (value >= 100000) {
+        setAmountErr("Value should be less than or equal 10,000");
+      } else {
+        setAmountErr("");
+      }
+    } else {
+      {
+        setAmountErr("Please Enter Amount");
+      }
+    }
+  };
+
+  const validateCate = (value) => {
+    const nuberRegex = RegExp(/\d/);
+    if (value) {
+      if (nuberRegex.test(value)) {
+        setCategoryErr("Please enter only alphabate");
+      } else if (value.length <= 2) {
+        setCategoryErr("Name should be greater than two charecter");
+      } else {
+        setCategoryErr("");
+      }
+    } else {
+      {
+        setCategoryErr("Please Enter Category");
+      }
+    }
+  };
+
+  const validateImg = (value) => {
+    if (value) {
+      setImageErr("");
+    } else {
+      {
+        setImageErr("Please select Image");
+      }
+    }
+  };
+
   return (
     <div>
       <nav
@@ -85,34 +123,34 @@ const Header = (props) => {
           {user.name}
         </div>
         <div className="col-4 h-100 d-flex justify-content-center">
-        <Link to="/survey">
-          <button
-            type="button"
-            className="btn btn-default btn-md "
-            // onClick={logout}
-            style={{ paddingBottom: "10px" }}
-          >
-            <i
-              className="fa fa-sign-out"
-              style={{ fontSize: "10px", marginRight: "4px" }}
-            ></i>
-            Survey
-          </button>
-        </Link>
-        <Link to="/profile">
-          <button
-            type="button"
-            className="btn btn-default btn-md"
-            //    onClick={logout}
-            style={{ paddingBottom: "10px" }}
-          >
-            <i
-              className="fa fa-sign-out"
-              style={{ fontSize: "10px", marginRight: "4px" }}
-            ></i>
-            Profile
-          </button>
-        </Link>
+          <Link to="/survey">
+            <button
+              type="button"
+              className="btn btn-default btn-md "
+              // onClick={logout}
+              style={{ paddingBottom: "10px" }}
+            >
+              <i
+                className="fa fa-sign-out"
+                style={{ fontSize: "10px", marginRight: "4px" }}
+              ></i>
+              Survey
+            </button>
+          </Link>
+          <Link to="/profile">
+            <button
+              type="button"
+              className="btn btn-default btn-md"
+              //    onClick={logout}
+              style={{ paddingBottom: "10px" }}
+            >
+              <i
+                className="fa fa-sign-out"
+                style={{ fontSize: "10px", marginRight: "4px" }}
+              ></i>
+              Profile
+            </button>
+          </Link>
         </div>
         <div className="col-4 h-100 d-flex justify-content-end">
           <button
@@ -178,6 +216,7 @@ const Header = (props) => {
                 <input
                   onChange={(e) => {
                     setCategoryName(e.target.value);
+                    validateCate(e.target.value);
                   }}
                   type="text"
                   className="form-control"
@@ -185,17 +224,20 @@ const Header = (props) => {
                   placeholder="Name of Category"
                 />
               </div>
-
+              <small className="form-text text-danger">{categoryErr}</small>
               <div className="mb-2">
                 <label className="file mt-3">
                   <input
                     onChange={(e) => {
                       setImage(e.target.value);
+                      validateImg(e.target.value);
                     }}
                     type="file"
                     id="file"
                     aria-label="File browser example"
+                    required={true}
                   />
+                   <small className="form-text text-danger">{imageErr}</small>
                   <span className="file-custom"></span>
                 </label>
               </div>
@@ -208,6 +250,7 @@ const Header = (props) => {
                 <input
                   onChange={(e) => {
                     setAmount(e.target.value);
+                    validateAmount(e.target.value);
                   }}
                   type="text"
                   className="form-control"
@@ -218,6 +261,7 @@ const Header = (props) => {
                   <span className="input-group-text">.00</span>
                 </div>
               </div>
+              <small className="form-text text-danger">{amountErr}</small>
             </div>
             <div className="modal-footer">
               <button
@@ -232,6 +276,7 @@ const Header = (props) => {
                 data-dismiss="modal"
                 className="btn btn-primary"
                 onClick={clickOnSubmit}
+                disabled={!(categoryErr === "" && amountErr === "" && imageErr === "" )}
               >
                 Save changes
               </button>

@@ -55,7 +55,7 @@ const  ExpenseCard = (props) => {
           component="img"
           alt="Contemplative Reptile"
           height="100"
-          image="/static/images/cards/contemplative-reptile.jpg"
+          image={require("../../Assets/Images/expense.PNG")}
           title="Contemplative Reptile"
         />
         <CardContent>

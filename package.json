@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.2",
+    "concurrently": "^5.3.0",
     "json-server": "^0.16.1",
     "mdbreact": "^4.27.0",
     "react": "^16.13.1",
@@ -27,7 +28,7 @@
     "survey-react": "^1.8.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"npx json-server --watch -p 3333 expense.json\" \"react-scripts start\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

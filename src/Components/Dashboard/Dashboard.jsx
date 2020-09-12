@@ -17,6 +17,7 @@ export const Dashboard = (props) => {
   const userData = useSelector((state) => state.user.data);
   const isLoading = useSelector((state) => state.user.isLoading);
   const err = useSelector((state) => state.user.error);
+  const [remainAmount , setRemainAmount] = useState();
   const [selectedCategory, setSelectedCategory] = useState(0);
   const [user, setUser] = useState();
   const [editId, seteditId] = useState(null);
@@ -25,7 +26,7 @@ export const Dashboard = (props) => {
     const index = userData.categories.findIndex(
       (category) => category.id === id
     );
-    console.log("SLECTED CATEGORY", index);
+   // console.log("SLECTED CATEGORY", index);
     setSelectedCategory(index);
   };
 
@@ -34,7 +35,7 @@ export const Dashboard = (props) => {
     //console.log("ID",id);
   };
   useEffect(() => {
-    console.log("Dash board ", props);
+  //  console.log("Dash board ", props);
   }, []);
 const { pathname}= props.history.location
   //console.log( "PropLoading", isLoading);
@@ -47,7 +48,7 @@ const { pathname}= props.history.location
   else if (user) {
     // console.log("RENDER")
     // console.log("USER", user)
-    // console.log("ELSE RENDER", userData);
+   //  console.log("REMAIN AMOUNT", remainAmount);
     return (
       <div>
         <Header user={userData} selectedCategory={selectedCategory} />
@@ -69,6 +70,10 @@ const { pathname}= props.history.location
                     clickOnEdit={clickOnEdit}
                     expenses={userData.categories[selectedCategory].expenses}
                     selectedCategory={selectedCategory}
+                    // remainAmount = {(remainAmount) => {
+                    //   console.log("Remain INside amount",remainAmount)
+                    //   setRemainAmount(remainAmount)}}
+
                   />
                 ) : (
                   <div>No expenses First Add CATEGORY</div>
@@ -80,6 +85,7 @@ const { pathname}= props.history.location
                     editId={editId}
                     selectedCategory={selectedCategory}
                     user={userData}
+                    remainAmount={remainAmount}
                   />
                 ) : (
                   <div>ADD category First </div>

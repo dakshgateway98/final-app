@@ -8,11 +8,17 @@ import { Link } from "react-router-dom";
 
 const SignUp = (props) => {
   const [userName, setUserName] = useState();
+  const [userNameErr, setUserNameErr] = useState();
   const [email, setEmail] = useState();
+  const[emailErr,setEmailErr] = useState();
   const [designation, setDesignation] = useState();
+  const [designationErr, setDesignationErr] = useState();
   const [adderss, setAddress] = useState();
+  const [adderssErr, setAddressErr] = useState();
   const [password, setPassword] = useState();
+  const [passErr,setPassErr]= useState();
   const [contact, setContact] = useState();
+  const [contactErr, setContactErr] = useState();
 
   const dispatch = useDispatch();
 
@@ -38,6 +44,118 @@ const SignUp = (props) => {
 
 
   };
+
+  const validateUserName = (value) => {
+    // const validEmailRegex = RegExp(
+    //   /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/
+    // );
+    if(value)
+        {
+          if(value.trim().length <5)
+          {
+           setUserNameErr("User name should be more than 5 character")
+          }
+          else
+          {
+            setUserNameErr("")
+          }
+        }
+        else{
+          {
+            setUserNameErr("Please Enter UserName")
+          }
+        }
+  }
+  const validateEmail = (value) => {
+    const validEmailRegex = RegExp(
+      /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/
+    );
+    if(value)
+        {
+          if(validEmailRegex.test(value))
+          {
+           setEmailErr("")
+          }
+          else
+          {
+           setEmailErr("Enter Valid Email Only")
+          }
+        }
+        else{
+          {
+            setEmailErr("Please Enter Email")
+          }
+        }
+  }
+  const validateContact = (value) => {
+    const validEmailRegex = RegExp(
+      /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+    );
+    if(value)
+        {
+          if(!(validEmailRegex.test(value)))
+          {
+           setContactErr("Enter Valid Contact")
+          }
+          else
+          {
+            setContactErr("")
+          }
+        }
+        else{
+          {
+            setContactErr("Please Enter Contact")
+          }
+        }
+  }
+  const validateAddress = (value) => {
+    if(value)
+    {
+      if(value.trim().length < 10)
+      {
+       setAddressErr("Address should be minimum 10 character")
+      }
+      else
+      {
+        setAddressErr("")
+      }
+    }
+    else{
+      {
+        setAddressErr("Please Enter Contact")
+      }
+    }
+  }
+ const validateDesignation = (value) => {
+  if(value)
+  {
+    if(value.trim().length < 4)
+    {
+     setDesignationErr("Designation should be minimum 3 character")
+    }
+    else
+    {
+      setDesignationErr("")
+    }
+  }
+  else{
+    {
+      setDesignationErr("Please Enter Designation")
+    }
+  }
+ }
+ const validatePass = (value) => {
+  if (value) {
+    if (value.length < 4) {
+     setPassErr("Minimum 4 Character Required")
+    } else {
+    setPassErr("")
+    }
+    } else {
+    setPassErr("Please Enter Password")
+    }
+   
+}
 
   return (
     <div className="make-it-center w-50 ">
@@ -72,12 +190,13 @@ const SignUp = (props) => {
                   icon="user"
                   onChange={(event) => {
                     setUserName(event.target.value);
+                    validateUserName(event.target.value)
                   }}
                   value={userName}
                   type="text"
                 />
-                {/* <small className="form-text text-danger">{props.errors.passwordForLogin}</small>
-                 */}
+                <small className="form-text text-danger">{userNameErr}</small>
+                
               </div>
               <div>
                 <MDBInput
@@ -86,11 +205,12 @@ const SignUp = (props) => {
                   name="emailForSignUp"
                   onChange={(event) => {
                     setEmail(event.target.value);
+                    validateEmail(event.target.value);
                   }}
                   value={email}
                   type="text"
                 />
-                {/* <small className="form-text text-danger">{this.props.errors.emailForLogin}</small> */}
+                <small className="form-text text-danger">{emailErr}</small>
               </div>
               <div>
                 <MDBInput
@@ -99,12 +219,13 @@ const SignUp = (props) => {
                   icon="lock"
                   onChange={(event) => {
                     setPassword(event.target.value);
+                    validatePass(event.target.value);
                   }}
                   value={password}
                   type="password"
                 />
-                {/* <small className="form-text text-danger">{props.errors.passwordForLogin}</small>
-                 */}
+                <small className="form-text text-danger">{passErr}</small>
+                
               </div>
               <div>
                 <MDBInput
@@ -113,12 +234,13 @@ const SignUp = (props) => {
                   icon="phone-square"
                   onChange={(event) => {
                     setContact(event.target.value);
+                    validateContact(event.target.value);
                   }}
                   value={contact}
                   type="number"
                 />
-                {/* <small className="form-text text-danger">{props.errors.passwordForLogin}</small>
-                 */}
+                <small className="form-text text-danger">{contactErr}</small>
+                
               </div>
               <div>
                 <MDBInput
@@ -127,12 +249,13 @@ const SignUp = (props) => {
                   icon="address-book"
                   onChange={(event) => {
                     setAddress(event.target.value);
+                    validateAddress(event.target.value)
                   }}
                   value={adderss}
                   type="text"
                 />
-                {/* <small className="form-text text-danger">{props.errors.passwordForLogin}</small>
-                 */}
+                <small className="form-text text-danger">{adderssErr}</small>
+                
               </div>
               <div>
                 <MDBInput
@@ -141,18 +264,20 @@ const SignUp = (props) => {
                   icon="user-plus"
                   onChange={(event) => {
                     setDesignation(event.target.value);
+                    validateDesignation(event.target.value)
                   }}
                   value={designation}
                   type="text"
                 />
-                {/* <small className="form-text text-danger">{props.errors.passwordForLogin}</small>
-                 */}
+                <small className="form-text text-danger">{designationErr}</small>
+                
               </div>
 
               <button
                 className="btn btn-dark mt-2 btn-block"
                 //   onClick={this.props.handleSubmit}
                 onClick={clickonSignUp}
+                disabled={!(userNameErr===""&&passErr==="" && emailErr==="" &&designationErr===""&&adderssErr===""&&contactErr==="" )}
               >
                 Sign Up
               </button>

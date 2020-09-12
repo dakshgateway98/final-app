@@ -23,6 +23,7 @@ export const DisplayExpense = (props) => {
   
       console.log("SUM FOR " , sum)
       setRemainAmount(Number(user.categories[props.selectedCategory].maxamount) - sum )
+      //props.remainAmount(remainAmount)
     }
     
     

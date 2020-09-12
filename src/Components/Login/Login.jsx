@@ -12,6 +12,9 @@ import { MDBCardBody } from "mdbreact";
 const Login = (props) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const[emailErr,setEmailErr] = useState();
+  const [passErr,setPassErr]= useState();
+
   const dispatch = useDispatch();
 
   const responseGoogle = async (response) => {
@@ -92,6 +95,41 @@ const Login = (props) => {
     }
   };
 
+  const validateEmail = (value) => {
+    const validEmailRegex = RegExp(
+      /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/
+    );
+    if(value)
+        {
+          if(validEmailRegex.test(value))
+          {
+           setEmailErr("")
+          }
+          else
+          {
+           setEmailErr("Enter Valid Email Only")
+          }
+        }
+        else{
+          {
+            setEmailErr("Please Enter Email")
+          }
+        }
+  }
+  const validatePass = (value) => {
+    if (value) {
+      if (value.length < 4) {
+       setPassErr("Minimum 4 Character Required")
+      } else {
+      setPassErr("")
+      }
+      } else {
+      setPassErr("Please Enter Password")
+      }
+     
+  }
+
+  
   return (
     <div className="make-it-center w-50 ">
       <MDBCol md="8" lg="8" sm="8">
@@ -113,6 +151,7 @@ const Login = (props) => {
             <form
               className="form"
               noValidate
+              onSubmit={clickOnSignIn}
               //    onSubmit={this.props.handleSubmit}
             >
               <small className="form-text text-danger"></small>
@@ -123,11 +162,12 @@ const Login = (props) => {
                   name="email"
                   onChange={(event) => {
                     setEmail(event.target.value);
+                    validateEmail(event.target.value)
                   }}
                   value={email}
                   type="text"
                 />
-                {/* <small className="form-text text-danger">{this.props.errors.emailForLogin}</small> */}
+                <small className="form-text text-danger">{emailErr}</small>
               </div>
               <div>
                 <MDBInput
@@ -137,18 +177,19 @@ const Login = (props) => {
                   //    onChange={this.props.handleInputChangesForLogin}
                   onChange={(event) => {
                     setPassword(event.target.value);
+                    validatePass(event.target.value)
                   }}
                   value={password}
                   type="password"
                 />
-                {/* <small className="form-text text-danger">{props.errors.passwordForLogin}</small>
-                 */}
+                <small className="form-text text-danger">{passErr}</small>
+                
               </div>
 
               <button
-                type="button"
+                type="submit"
                 className="btn btn-dark  btn-block"
-                onClick={clickOnSignIn}
+             disabled={!(emailErr===""&&passErr==="")}
               >
                 Sign In
               </button>

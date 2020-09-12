@@ -14,20 +14,20 @@
           "categoryName": "Food Expense",
           "maxamount": "5000",
           "image": "blob:http://localhost:3000/ef0170fe-932f-42ac-9af1-848b65955d9c",
-          "enabled": false,
+          "enabled": true,
           "expenses": [
             {
               "id": 1,
-              "name": "Nasta",
-              "description": "fewfw",
-              "spentAmount": "23",
-              "image": "C:\\fakepath\\pic1.jpeg"
+              "name": "Nasta toble",
+              "description": "karfemfeeffm",
+              "spentAmount": "24",
+              "image": "C:\\fakepath\\18296.jpg"
             },
             {
               "id": 2,
-              "name": "FOOD",
-              "description": "fw3rf3",
-              "spentAmount": "20",
+              "name": "FOOD A",
+              "description": "fw3rf3hjyttyjhtj",
+              "spentAmount": "2000",
               "image": "C:\\fakepath\\pic1.jpeg"
             }
           ]
@@ -69,7 +69,14 @@
             }
           ],
           "image": "C:\\fakepath\\pic3.jpg",
-          "maxamount": "4000"
+          "maxamount": "2000"
+        },
+        {
+          "id": 4,
+          "categoryName": "Sports",
+          "enabled": true,
+          "expenses": [],
+          "maxamount": "10"
         }
       ]
     },
@@ -243,12 +250,12 @@
             }
           ],
           "image": "C:\\fakepath\\logo.png",
-          "maxamount": "1200"
+          "maxamount": "2000"
         },
         {
           "id": 2,
           "categoryName": "FOOD",
-          "enabled": true,
+          "enabled": false,
           "expenses": [
             {
               "id": 1,
@@ -259,7 +266,7 @@
             }
           ],
           "image": "C:\\fakepath\\pic3.jpg",
-          "maxamount": "1300"
+          "maxamount": "2000"
         }
       ],
       "id": 6
@@ -366,6 +373,56 @@
       "password": "default",
       "categories": [],
       "id": 9
+    },
+    {
+      "name": "New",
+      "email": "new@mail.com",
+      "contact": "7899874563",
+      "designation": "cvsdfsdfzdf",
+      "address": "gsgvfsfgvrs",
+      "password": "1234",
+      "categories": [
+        {
+          "id": 1,
+          "categoryName": "FOOD",
+          "enabled": false,
+          "expenses": [
+            {
+              "id": 1,
+              "name": "FOOD",
+              "description": "vdfvsefs",
+              "spentAmount": "20",
+              "image": "C:\\fakepath\\18296.jpg"
+            },
+            {
+              "id": 2,
+              "name": "FOOD2",
+              "description": "vdfvsefs",
+              "spentAmount": "200",
+              "image": "C:\\fakepath\\18296.jpg"
+            }
+          ],
+          "image": "C:\\fakepath\\18296.jpg",
+          "maxamount": "1000"
+        },
+        {
+          "id": 2,
+          "categoryName": "JALSA",
+          "enabled": true,
+          "expenses": [],
+          "image": "C:\\fakepath\\18296.jpg",
+          "maxamount": "2000"
+        },
+        {
+          "id": 3,
+          "categoryName": "TIMEPASS",
+          "enabled": true,
+          "expenses": [],
+          "image": "C:\\fakepath\\18296.jpg",
+          "maxamount": "3443"
+        }
+      ],
+      "id": 10
     }
   ]
 }
