@@ -20,7 +20,8 @@ class Profile extends Component {
       user: {},
       error: "",
       isLoaded: true,
-      open:false
+      open:false,
+      catAmountErr:""
     };
   }
 // function Alert(props) {
@@ -66,6 +67,35 @@ class Profile extends Component {
     this.setState({
       open:false
     })
+  }
+  validateCatValue = (value) => {
+   // console.log("Remain Amount", remainAmont);
+    const nuberRegex = new RegExp("^[0-9]+$");
+    if (value) {
+      if (!nuberRegex.test(value)) {
+        this.setState({
+          catAmountErr:"Please Enter Number"});
+      }else if (Number(value) === 0) {
+        
+        this.setState({
+          catAmountErr:"Value should not be zero"});
+      } 
+       else if (value > 10000) {
+        
+        this.setState({
+          catAmountErr:"Value should be less than or equal to 10,000"});
+      } else {
+        this.setState({
+          catAmountErr:""});
+      }
+    } else {
+      {
+        this.setState({
+          catAmountErr:"Please Enter Expense Amount"});
+        
+      }
+    }
+
   }
   componentWillReceiveProps(nextProps) {
     // console.log(nextProps.user, "USER");
@@ -118,6 +148,7 @@ class Profile extends Component {
             </button>
           </Link>
           <TableContainer component={Paper}>
+          <small className="text-danger mt-1 ml-3">{this.state.catAmountErr}</small>
             <Table aria-label="simple table">
               <TableHead>
                 <TableRow>
@@ -128,7 +159,7 @@ class Profile extends Component {
                 </TableRow>
               </TableHead>
               <TableBody>
-               
+             
                 {user.categories.map((cate) => (
                   <TableRow key={cate.id}>
                   
@@ -149,7 +180,16 @@ class Profile extends Component {
                         type="text"
                         className="form-control m-0 w-25"
                         defaultValue={Number(cate.maxamount)}
+                       // value={this.state.catValue}
+                        onChange={
+                          (e) => {
+                            this.validateCatValue(e.target.value)
+                            }
+                         // this.validateCatValue(e.target.value)
+                        }
+                        
                       />
+                     
                       <button
                         onClick={() => {
                           this.changeMaxAmountValue(
@@ -159,6 +199,7 @@ class Profile extends Component {
                         }}
                         style={{ backgroundColor: "rgb(136, 136, 136)" }}
                         className="btn btn-sm "
+                       disabled={ this.state.catAmountErr !== ""}
                       >
                         Save
                       </button>

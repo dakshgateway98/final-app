@@ -163,7 +163,10 @@ export const AddExpense = (props) => {
     if (value) {
       if (!nuberRegex.test(value)) {
         setPriceErr("Please Enter Number");
-      } else if (value > Number(remainAmont)) {
+      }else if (Number(value) === 0) {
+        setPriceErr(`Value should not be zero`);
+      } 
+       else if (value > Number(remainAmont)) {
         setPriceErr(`Value should be less than or equal to Remain amount`);
       } else {
         setPriceErr("");

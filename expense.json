@@ -14,7 +14,7 @@
           "categoryName": "Food Expense",
           "maxamount": "5000",
           "image": "blob:http://localhost:3000/ef0170fe-932f-42ac-9af1-848b65955d9c",
-          "enabled": true,
+          "enabled": false,
           "expenses": [
             {
               "id": 1,
@@ -22,13 +22,6 @@
               "description": "karfemfeeffm",
               "spentAmount": "24",
               "image": "C:\\fakepath\\18296.jpg"
-            },
-            {
-              "id": 2,
-              "name": "FOOD A",
-              "description": "fw3rf3hjyttyjhtj",
-              "spentAmount": "2000",
-              "image": "C:\\fakepath\\pic1.jpeg"
             }
           ]
         },
@@ -43,6 +36,20 @@
               "description": "grgdgdgvd",
               "spentAmount": "810",
               "image": "C:\\fakepath\\pic3.jpg"
+            },
+            {
+              "id": 2,
+              "name": "Garba karenge",
+              "description": "dedefefefffe",
+              "spentAmount": "900",
+              "image": "C:\\fakepath\\18296.jpg"
+            },
+            {
+              "id": 3,
+              "name": "Garba karenge",
+              "description": "grgdgdgvddd",
+              "spentAmount": "129",
+              "image": "C:\\fakepath\\DEMOmeme.jfif"
             }
           ],
           "image": "C:\\fakepath\\pic1.jpeg",
@@ -75,8 +82,16 @@
           "id": 4,
           "categoryName": "Sports",
           "enabled": true,
-          "expenses": [],
-          "maxamount": "10"
+          "expenses": [
+            {
+              "id": 1,
+              "name": "Sports Expense",
+              "description": "vdsvdvsvsdv",
+              "spentAmount": "10",
+              "image": "C:\\fakepath\\18296.jpg"
+            }
+          ],
+          "maxamount": "1000"
         }
       ]
     },
@@ -365,64 +380,14 @@
       "id": 8
     },
     {
+      "id": 9,
       "name": "Daksh Patel",
       "email": "daksh.patel@thegatewaycorp.com",
       "contact": "9090909090",
       "designation": "default",
       "address": "default",
       "password": "default",
-      "categories": [],
-      "id": 9
-    },
-    {
-      "name": "New",
-      "email": "new@mail.com",
-      "contact": "7899874563",
-      "designation": "cvsdfsdfzdf",
-      "address": "gsgvfsfgvrs",
-      "password": "1234",
-      "categories": [
-        {
-          "id": 1,
-          "categoryName": "FOOD",
-          "enabled": false,
-          "expenses": [
-            {
-              "id": 1,
-              "name": "FOOD",
-              "description": "vdfvsefs",
-              "spentAmount": "20",
-              "image": "C:\\fakepath\\18296.jpg"
-            },
-            {
-              "id": 2,
-              "name": "FOOD2",
-              "description": "vdfvsefs",
-              "spentAmount": "200",
-              "image": "C:\\fakepath\\18296.jpg"
-            }
-          ],
-          "image": "C:\\fakepath\\18296.jpg",
-          "maxamount": "1000"
-        },
-        {
-          "id": 2,
-          "categoryName": "JALSA",
-          "enabled": true,
-          "expenses": [],
-          "image": "C:\\fakepath\\18296.jpg",
-          "maxamount": "2000"
-        },
-        {
-          "id": 3,
-          "categoryName": "TIMEPASS",
-          "enabled": true,
-          "expenses": [],
-          "image": "C:\\fakepath\\18296.jpg",
-          "maxamount": "3443"
-        }
-      ],
-      "id": 10
+      "categories": []
     }
   ]
 }

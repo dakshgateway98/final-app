@@ -73,7 +73,9 @@ const Header = (props) => {
     if (value) {
       if (!nuberRegex.test(value)) {
         setAmountErr("Please Enter Number");
-      } else if (value >= 100000) {
+      }else if (Number(value) === 0) {
+        setAmountErr(`Value should not be zero`);}
+       else if (value >= 100000) {
         setAmountErr("Value should be less than or equal 10,000");
       } else {
         setAmountErr("");
@@ -122,7 +124,7 @@ const Header = (props) => {
           {/* <img src={require("../../Assets/Images/logo-header.PNG")} alt=""  height={10 } width={10}/> */}
           {user.name}
         </div>
-        <div className="col-4 h-100 d-flex justify-content-center">
+        <div className="col-8 h-100 d-flex justify-content-end">
           <Link to="/survey">
             <button
               type="button"
@@ -131,9 +133,10 @@ const Header = (props) => {
               style={{ paddingBottom: "10px" }}
             >
               <i
-                className="fa fa-sign-out"
+                className="fa fa-poll-h"
                 style={{ fontSize: "10px", marginRight: "4px" }}
               ></i>
+              
               Survey
             </button>
           </Link>
@@ -145,14 +148,14 @@ const Header = (props) => {
               style={{ paddingBottom: "10px" }}
             >
               <i
-                className="fa fa-sign-out"
+                className="fa fa-cogs"
                 style={{ fontSize: "10px", marginRight: "4px" }}
               ></i>
-              Profile
+              settings
             </button>
           </Link>
-        </div>
-        <div className="col-4 h-100 d-flex justify-content-end">
+        {/* </div>
+        <div className="col-4 h-100 d-flex justify-content-end"> */}
           <button
             type="button"
             className="btn btn-default btn-md text-center"

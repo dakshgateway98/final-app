@@ -12,24 +12,43 @@ import { MDBCardBody } from "mdbreact";
 const Login = (props) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const[emailErr,setEmailErr] = useState();
-  const [passErr,setPassErr]= useState();
+  const [emailErr, setEmailErr] = useState();
+  const [passErr, setPassErr] = useState();
 
   const dispatch = useDispatch();
 
   const responseGoogle = async (response) => {
     const { profileObj } = response;
+    let lastUser = allUserData[Object.keys(allUserData).length - 1]
     const checkExistUser = allUserData.filter(
       (x) => x.email === profileObj.email
     );
-    console.log("CHECK", checkExistUser);
+    console.log("CHECK");
     if (Object.keys(checkExistUser).length === 1) {
-      console.log("USER EXIST", checkExistUser);
-    } else if(Object.keys(checkExistUser).length === 0){
-      console.log("CREATE NEW USER",checkExistUser);
+      console.log("USER EXIST", checkExistUser[0]);
+      // await  localStorage.setItem("id", checkExistUser[0].id);
+      // await localStorage.setItem("userToken",  checkExistUser[0].name +  checkExistUser[0].contact );
+      // localStorage.setItem('isGoogleLogin' ,true)
+      // console.log("PROPS",props)
+
+    } else if (Object.keys(checkExistUser).length === 0) {
+      console.log("CREATE NEW USER", checkExistUser);
+       const userObject = {
+      id:lastUser.id+1,
+      name: profileObj.name,
+      email: profileObj.email,
+      contact: "9090909090",
+      designation: "default",
+      address: "default",
+      password:"default",
+      categories: []
     }
-    else{
-      return (<div>Something Went Wrong</div>)
+      localStorage.setItem("id",lastUser.id+1);
+     localStorage.setItem("userToken", userObject.name + userObject.contact );
+    await  dispatch(createUser(userObject));
+    // console.log("PROPS", props);
+    } else {
+      return <div>Multiple user exist on same Id</div>;
     }
     // console.log("responseGoogle",profileObj);
     // let lastUser = allUserData[Object.keys(allUserData).length - 1]
@@ -99,37 +118,30 @@ const Login = (props) => {
     const validEmailRegex = RegExp(
       /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/
     );
-    if(value)
-        {
-          if(validEmailRegex.test(value))
-          {
-           setEmailErr("")
-          }
-          else
-          {
-           setEmailErr("Enter Valid Email Only")
-          }
-        }
-        else{
-          {
-            setEmailErr("Please Enter Email")
-          }
-        }
-  }
+    if (value) {
+      if (validEmailRegex.test(value)) {
+        setEmailErr("");
+      } else {
+        setEmailErr("Enter Valid Email Only");
+      }
+    } else {
+      {
+        setEmailErr("Please Enter Email");
+      }
+    }
+  };
   const validatePass = (value) => {
     if (value) {
       if (value.length < 4) {
-       setPassErr("Minimum 4 Character Required")
+        setPassErr("Minimum 4 Character Required");
       } else {
-      setPassErr("")
+        setPassErr("");
       }
-      } else {
-      setPassErr("Please Enter Password")
-      }
-     
-  }
+    } else {
+      setPassErr("Please Enter Password");
+    }
+  };
 
-  
   return (
     <div className="make-it-center w-50 ">
       <MDBCol md="8" lg="8" sm="8">
@@ -162,7 +174,7 @@ const Login = (props) => {
                   name="email"
                   onChange={(event) => {
                     setEmail(event.target.value);
-                    validateEmail(event.target.value)
+                    validateEmail(event.target.value);
                   }}
                   value={email}
                   type="text"
@@ -177,25 +189,24 @@ const Login = (props) => {
                   //    onChange={this.props.handleInputChangesForLogin}
                   onChange={(event) => {
                     setPassword(event.target.value);
-                    validatePass(event.target.value)
+                    validatePass(event.target.value);
                   }}
                   value={password}
                   type="password"
                 />
                 <small className="form-text text-danger">{passErr}</small>
-                
               </div>
 
               <button
                 type="submit"
                 className="btn btn-dark  btn-block"
-             disabled={!(emailErr===""&&passErr==="")}
+                disabled={!(emailErr === "" && passErr === "")}
               >
                 Sign In
               </button>
               <div className="row">
                 <div className="col-6 py-4 mt-3 d-flex justify-content-center">
-                  <GoogleLogin
+                  {/* <GoogleLogin
                     clientId="997523334199-qvpsmmji4fp1i2tlsu9grvvk30o4kibc.apps.googleusercontent.com"
                     buttonText="Login"
                     render={(renderProps) => (
@@ -210,7 +221,7 @@ const Login = (props) => {
                     onSuccess={responseGoogle}
                     onFailure={responseGoogle}
                     cookiePolicy={"single_host_origin"}
-                  />
+                  /> */}
                   {/* <Link onClick = { () => {
                      
                     }}>Don't Have An Account......? </Link> */}
@@ -226,11 +237,11 @@ const Login = (props) => {
         </div>
       </MDBCol>
 
-      <GoogleLogout
+      {/* <GoogleLogout
         clientId="997523334199-qvpsmmji4fp1i2tlsu9grvvk30o4kibc.apps.googleusercontent.com"
         buttonText="Logout"
         onLogoutSuccess={logout}
-      ></GoogleLogout>
+      ></GoogleLogout> */}
     </div>
   );
 };
