@@ -292,7 +292,7 @@
       "contact": "9865741235",
       "designation": "gefgvdfgrf",
       "address": "bfgbgbfbnftn",
-      "password": "1234",
+      "password": "12346",
       "categories": [
         {
           "id": 1,
@@ -378,16 +378,7 @@
         }
       ],
       "id": 8
-    },
-    {
-      "id": 9,
-      "name": "Daksh Patel",
-      "email": "daksh.patel@thegatewaycorp.com",
-      "contact": "9090909090",
-      "designation": "default",
-      "address": "default",
-      "password": "default",
-      "categories": []
     }
+    
   ]
 }

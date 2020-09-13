@@ -135,7 +135,7 @@ class Profile extends Component {
            
         //  }
            autoHideDuration={2000} 
-           onClose={this.handleClose}/>
+           />
             
              
     

@@ -8,13 +8,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { MDBCol, MDBCard, MDBCardImage, MDBInput } from "mdbreact";
 import { MDBCardBody } from "mdbreact";
+import Snackbar from '@material-ui/core/Snackbar';
 
 const Login = (props) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [emailErr, setEmailErr] = useState();
   const [passErr, setPassErr] = useState();
-
+const[open,setOpen] = useState(false)
+const[loginErr,setLoginErr] = useState("")
   const dispatch = useDispatch();
 
   const responseGoogle = async (response) => {
@@ -97,14 +99,18 @@ const Login = (props) => {
       }
     });
     if (flag === true) {
+      setLoginErr("")
       return props.history.push({
         pathname: "/dashboard",
         //  state: { name: localStorage.getItem('name') }
       });
+     
     } else {
       // console.log("dwdw");
-      alert("Wrong username");
+       alert("Wrong username");
       //    toast.error("Wrong username");
+      setLoginErr("Login failed try Again")
+      //setOpen(true);
       setEmail();
       setPassword();
 
@@ -141,9 +147,30 @@ const Login = (props) => {
       setPassErr("Please Enter Password");
     }
   };
+  const handleClose = (event, reason) =>{
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false)
+  }
 
   return (
     <div className="make-it-center w-50 ">
+       <small className="form-text text-danger">{loginErr}</small>
+        <Snackbar
+           anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+         open={open}
+         onClose={handleClose}
+         message="FAIL"
+        //  action={
+           
+        //  }
+           autoHideDuration={2000} 
+           />
       <MDBCol md="8" lg="8" sm="8">
         <div className="give-box-shadow">
           <MDBCard narrow>
@@ -166,7 +193,7 @@ const Login = (props) => {
               onSubmit={clickOnSignIn}
               //    onSubmit={this.props.handleSubmit}
             >
-              <small className="form-text text-danger"></small>
+              
               <div>
                 <MDBInput
                   label="Email"
@@ -204,6 +231,7 @@ const Login = (props) => {
               >
                 Sign In
               </button>
+               
               <div className="row">
                 <div className="col-6 py-4 mt-3 d-flex justify-content-center">
                   {/* <GoogleLogin
